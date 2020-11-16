@@ -25,12 +25,10 @@ const LoginForm = () => {
                 <h2>Login</h2>
                 <Formik
                     initialValues={{ username: "", password: "" }}
-                    onSubmit={(values, { setSubmitting, resetForm  }) => {
-                        setTimeout(() => {
-                            userLogin(values)
-                            setSubmitting(false)
-                            resetForm()
-                        }, 400)
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
+                        userLogin(values)
+                        setSubmitting(false)
+                        resetForm()
                     }}
                 >
                     {({ isSubmitting }) => (
@@ -43,6 +41,7 @@ const LoginForm = () => {
                         </Form>
                     )}
                 </Formik>
+                <h3>Don't have an account yet? Register here!</h3>
             </section>
         </div>
     )

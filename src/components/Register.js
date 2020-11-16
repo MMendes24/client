@@ -4,7 +4,7 @@ import { Formik, Field, Form } from "formik"
 
 const Register = () => {
 
-    const userRegister = values => {
+    const userRegister = (values) => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/register", values)
             .then(res => {
                 console.log("Data sent")
@@ -13,7 +13,6 @@ const Register = () => {
                 console.log("Data rejected")
             })
     }
-
 
     return (
         <div>
@@ -25,11 +24,9 @@ const Register = () => {
                     email: "",
                 }}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
-                    setTimeout(() => {
-                        userRegister(values)
-                        setSubmitting(false)
-                        resetForm()
-                    }, 400)
+                    userRegister(values)
+                    setSubmitting(false)
+                    resetForm()
                 }}
             >
                 {({ isSubmitting }) => (

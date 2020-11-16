@@ -17,26 +17,32 @@ const LoginForm = () => {
 
     return (
         <div>
-            <h2>Login</h2>
-            <Formik
-                initialValues={{ username: '', password: '' }}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        userLogin(values)
-                        setSubmitting(false);
-                    }, 400);
-                }}
-            >
-                {({ isSubmitting }) => (
-                    <Form>
-                        <Field type="username" name="username" />
-                        <Field type="password" name="password" />
-                        <button type="submit" disabled={isSubmitting}>
-                            Submit
+            <header>
+                <h1>Campaign Journal</h1>
+                <h2>The most fantastical app on the web!</h2>
+            </header>
+            <section>
+                <h2>Login</h2>
+                <Formik
+                    initialValues={{ username: '', password: '' }}
+                    onSubmit={(values, { setSubmitting }) => {
+                        setTimeout(() => {
+                            userLogin(values)
+                            setSubmitting(false);
+                        }, 400)
+                    }}
+                >
+                    {({ isSubmitting }) => (
+                        <Form>
+                            <Field type="username" name="username" />
+                            <Field type="password" name="password" />
+                            <button type="submit" disabled={isSubmitting}>
+                                Submit
                         </button>
-                    </Form>
-                )}
-            </Formik>
+                        </Form>
+                    )}
+                </Formik>
+            </section>
         </div>
     )
 }

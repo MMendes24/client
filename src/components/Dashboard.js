@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import axiosAuth from "../utils/axiosAuth"
 
+import Campaign from "./Campaign"
+
 const Dashboard = (props) => {
     const [campaigns, setCampaigns] = useState([])
 
@@ -20,12 +22,11 @@ const Dashboard = (props) => {
     }, [])
 
     return (
-        <div>
-            {/* {campaigns.map(campaign => (
-                <h2 key={campaign.id}> {campaign.name}</h2>
-            ))} */}
-            <h2>Temp header</h2>
-        </div>
+        <section>
+            {campaigns.map(campaign => (
+                <Campaign key={campaign.id} campaign={campaign} />
+            ))}
+        </section>
     )
 }
 

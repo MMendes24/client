@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import axiosAuth from "../utils/axiosAuth"
 
 import Campaign from "./Campaign"
 
 const Dashboard = (props) => {
     const [campaigns, setCampaigns] = useState([])
+    const { id } = useParams()
 
     const getCampaigns = () => {
-        axiosAuth().get("/campaigns")
+        axiosAuth().get(`campaigns/user-campaigns/${id}`)
             .then(res => {
+                console.log(res.data)
                 setCampaigns(res.data.campaigns)
             })
             .catch(err => {

@@ -1,13 +1,18 @@
 import React from "react"
+import { useHistory } from "react-router-dom"
 import axios from "axios"
 import { Formik, Form, Field } from "formik"
 
 const LoginForm = () => {
+    const history = useHistory()
 
     const userLogin = (values) => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/login", values)
             .then(res => {
-                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("user", res.data.user.id);
+                const id = res.data.user.id
+                history.push(`/home/${id}`)
             })
             .catch(err => {
                 console.log("are you serious?")

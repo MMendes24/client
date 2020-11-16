@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import axiosAuth from "../utils/axiosAuth"
 
 const CampaignInfo = (props) => {
-    console.log(props)
     //setting state
     const [worlds, setWorlds] = useState([])
     const [chars, setChars] = useState([])
@@ -58,28 +57,45 @@ const CampaignInfo = (props) => {
             </section>
 
             <section className="world-sec">
+                <h2>Worlds</h2>
+                <Link to="#">Create World</Link>
                 {worlds.map(world => (
                     <div className="world-card" key={world.id}>
                         <h3>{world.name}</h3>
-                        <p>{world.description}</p>
+                        <p>Description: {world.description}</p>
+                        <Link to="#">Edit</Link>
+                        <button>Delete</button>
                     </div>
                 ))}
             </section>
 
             <section className="char-sec">
+                <h2>Characters</h2>
+                <Link to="#">Add Character</Link>
                 {chars.map(char => (
                     <div className="char-card" key={char.id}>
                         <h3>{char.name}</h3>
-                        <p>{char.description}</p>
+                        <p>Description: {char.description}</p>
+                        <p>Ancestry: {char.ancestry}</p>
+                        <p>Level: {char.level}</p>
+                        <p>Class: {char.class}</p>
+                        <Link to="#">Edit</Link>
+                        <button>Delete</button>
                     </div>
                 ))}
             </section>
 
             <section className="countries-sec">
+            <Link to="#">Found Country</Link>
+                <h2>Countries</h2>
                 {countries.map(country => (
                     <div className="country-card" key={country.id}>
                         <h3>{country.name}</h3>
-                        <p>{country.description}</p>
+                        <p>Description: {country.description}</p>
+                        <p>Ruler: {country.ruler}</p>
+                        <p>Founded: {country.founded}</p>
+                        <Link to="#">Edit</Link>
+                        <button>Delete</button>
                     </div>
                 ))}
             </section>

@@ -17,7 +17,7 @@ function App() {
           <CampaignInfo />
         </Route>
 
-        <Route path="/home" >
+        <Route path="/home/:id" >
           <Dashboard />
         </Route>
 
@@ -28,7 +28,7 @@ function App() {
         <Route path="/" >
           <LoginForm />
         </Route>
-        
+
       </Switch>
     </div>
   );

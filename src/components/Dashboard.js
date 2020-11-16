@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
 const Dashboard = (props) => {
-    return(
+    return (
         <div></div>
     )
 }

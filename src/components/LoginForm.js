@@ -7,7 +7,6 @@ const LoginForm = () => {
     const userLogin = (values) => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/login", values)
             .then(res => {
-                console.log(res)
                 localStorage.setItem("token", res.data.token);
             })
             .catch(err => {

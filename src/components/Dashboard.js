@@ -9,7 +9,6 @@ const Dashboard = (props) => {
     const getCampaigns = () => {
         axiosAuth().get("/campaigns")
             .then(res => {
-                console.log(res.data.campaigns[0])
                 setCampaigns(res.data.campaigns)
             })
             .catch(err => {
@@ -23,9 +22,11 @@ const Dashboard = (props) => {
 
     return (
         <section>
-            {campaigns.map(campaign => (
-                <Campaign key={campaign.id} campaign={campaign} />
-            ))}
+            <div className="card-catalogue">
+                {campaigns.map(campaign => (
+                    <Campaign key={campaign.id} campaign={campaign} />
+                ))}
+            </div>
         </section>
     )
 }

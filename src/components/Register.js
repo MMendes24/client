@@ -1,6 +1,6 @@
 import React from "react"
-import axios from 'axios'
-import { Formik, Field, Form } from 'formik'
+import axios from "axios"
+import { Formik, Field, Form } from "formik"
 
 const Register = () => {
 
@@ -20,14 +20,15 @@ const Register = () => {
             <h1>Register an account</h1>
             <Formik
                 initialValues={{
-                    username: '',
-                    password: '',
-                    email: '',
+                    username: "",
+                    password: "",
+                    email: "",
                 }}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, { setSubmitting, resetForm }) => {
                     setTimeout(() => {
                         userRegister(values)
-                        setSubmitting(false);
+                        setSubmitting(false)
+                        resetForm()
                     }, 400)
                 }}
             >

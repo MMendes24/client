@@ -8,7 +8,7 @@ const LoginForm = () => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/login", values)
             .then(res => {
                 console.log(res)
-                localStorage.setItem('token', res.data.token);
+                localStorage.setItem("token", res.data.token);
             })
             .catch(err => {
                 console.log("are you serious?")
@@ -24,11 +24,12 @@ const LoginForm = () => {
             <section>
                 <h2>Login</h2>
                 <Formik
-                    initialValues={{ username: '', password: '' }}
-                    onSubmit={(values, { setSubmitting }) => {
+                    initialValues={{ username: "", password: "" }}
+                    onSubmit={(values, { setSubmitting, resetForm  }) => {
                         setTimeout(() => {
                             userLogin(values)
-                            setSubmitting(false);
+                            setSubmitting(false)
+                            resetForm()
                         }, 400)
                     }}
                 >

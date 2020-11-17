@@ -14,6 +14,7 @@ import CampaignEdit from "./components/CampaignEdit"
 
 // import world components
 import WorldAdd from "./components/WorldAdd"
+import WorldEdit from "./components/WorldEdit"
 
 import "./App.css"
 
@@ -21,6 +22,11 @@ function App() {
   return (
     <div className="App">
       <Switch>
+
+        <Route path="/campaign/:id/worlds/:worldid/edit-world" >
+          <WorldEdit />
+        </Route>
+
 
         <Route path="/campaign/:id/add-world/" >
           <WorldAdd />

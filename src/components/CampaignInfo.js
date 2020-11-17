@@ -79,7 +79,7 @@ const CampaignInfo = (props) => {
                     <div className="world-card" key={world.id}>
                         <h3>{world.name}</h3>
                         <p>Description: {world.description}</p>
-                        <Link to="">Edit</Link>
+                        <Link to={`/campaign/${id}/worlds/${world.id}/edit-world`}>Edit</Link>
                         <button>Delete</button>
                     </div>
                 ))}

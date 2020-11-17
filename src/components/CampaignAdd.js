@@ -28,7 +28,6 @@ const CampaignAdd = () => {
             }}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 createCampaign(values)
-                console.log(values)
                 setSubmitting(false)
                 resetForm()
             }}
@@ -41,7 +40,7 @@ const CampaignAdd = () => {
                     <Field type="desc" name="desc" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
-                        </button>
+                    </button>
                 </Form>
             )}
         </Formik>

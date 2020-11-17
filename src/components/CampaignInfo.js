@@ -69,7 +69,7 @@ const CampaignInfo = (props) => {
                 <h1>Campaign</h1>
                 <h3>{camp.name}</h3>
                 <h3>{camp.desc}</h3>
-                <Link to="#">Edit</Link>
+                <Link to={`/campaign/${id}/edit`}>Edit</Link>
                 <button>Delete</button>
             </section>
 
@@ -80,7 +80,7 @@ const CampaignInfo = (props) => {
                     <div className="world-card" key={world.id}>
                         <h3>{world.name}</h3>
                         <p>Description: {world.description}</p>
-                        <Link to="#">Edit</Link>
+                        <Link to="">Edit</Link>
                         <button>Delete</button>
                     </div>
                 ))}

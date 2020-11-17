@@ -6,6 +6,7 @@ import Register from "./components/Register"
 import Dashboard from "./components/Dashboard"
 import CampaignInfo from "./components/CampaignInfo"
 import CampaignAdd from "./components/CampaignAdd"
+import CampaignEdit from "./components/CampaignEdit"
 
 import "./App.css"
 
@@ -14,8 +15,12 @@ function App() {
     <div className="App">
       <Switch>
 
-      <Route path="/add-campaign/:id" >
+        <Route path="/add-campaign/:id" >
           <CampaignAdd />
+        </Route>
+
+        <Route path="/campaign/:id/edit" >
+          <CampaignEdit />
         </Route>
 
         <Route path="/campaign/:id" >

@@ -4,12 +4,24 @@ import axiosAuth from "../utils/axiosAuth"
 
 const CampaignInfo = (props) => {
     //setting state
+    const [camp, setCamp] = useState([])
     const [worlds, setWorlds] = useState([])
     const [chars, setChars] = useState([])
     const [countries, setCountries] = useState([])
 
     //grabbing campaign id
     const { id } = useParams()
+
+    const getCamps = () => {
+        axiosAuth().get(`campaigns/${id}`)
+            .then(res => {
+                console.log(res.data)
+                setCamp(res.data.campaigns)
+            })
+            .catch(err => {
+                console.log("didn't work")
+            })
+    }
 
     const getWorlds = () => {
         axiosAuth()
@@ -45,6 +57,7 @@ const CampaignInfo = (props) => {
     }
 
     useEffect(() => {
+        getCamps()
         getWorlds()
         getChars()
         getCountries()
@@ -53,7 +66,11 @@ const CampaignInfo = (props) => {
     return (
         <div className="campaign-full">
             <section className="camp-sec">
-
+                <h1>Campaign</h1>
+                <h3>{camp.name}</h3>
+                <h3>{camp.desc}</h3>
+                <Link to="#">Edit</Link>
+                <button>Delete</button>
             </section>
 
             <section className="world-sec">
@@ -86,7 +103,7 @@ const CampaignInfo = (props) => {
             </section>
 
             <section className="countries-sec">
-            <Link to="#">Found Country</Link>
+                <Link to="#">Found Country</Link>
                 <h2>Countries</h2>
                 {countries.map(country => (
                     <div className="country-card" key={country.id}>

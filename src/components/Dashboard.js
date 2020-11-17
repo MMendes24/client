@@ -20,7 +20,7 @@ const Dashboard = (props) => {
                 console.log("didn't work")
             })
         } else {
-            console.error("wrong user")
+            console.error("You are not the authorized user.")
         }
     }
 
@@ -29,13 +29,13 @@ const Dashboard = (props) => {
     }, [])
 
     return (
-        <section>
-            <div className="card-catalogue">
+        <div>
+            <section className="card-catalogue">
                 {campaigns.map(campaign => (
                     <Campaign key={campaign.id} campaign={campaign} />
                 ))}
-            </div>
-        </section>
+            </section>
+        </div>
     )
 }
 

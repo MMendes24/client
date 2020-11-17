@@ -1,9 +1,9 @@
 import React from "react"
 
-const CampaignFormAdd = (props) => {
+const CampaignEdit = (props) => {
     return (
         <div></div>
     )
 }
 
-export default CampaignFormAdd
+export default CampaignEdit

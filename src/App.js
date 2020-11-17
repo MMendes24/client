@@ -25,7 +25,7 @@ function App() {
           <Register />
         </Route>
 
-        <Route path="/" >
+        <Route exact path="/" >
           <LoginForm />
         </Route>
 

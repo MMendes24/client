@@ -8,7 +8,7 @@ const Campaign = (props) => {
         <div className="campaign-card">
             <h2>{name}</h2>
             <h3>{desc}</h3>
-            <Link to={`campaign/${id}`}>More</Link>
+            <Link to={`/campaign/${id}`}>More</Link>
         </div>
     )
 }

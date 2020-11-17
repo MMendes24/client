@@ -48,9 +48,26 @@ const CharAdd = () => {
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="3">4</option>
+                        <option value="3">5</option>
+                        <option value="3">6</option>
+                        <option value="3">7</option>
+                        <option value="3">8</option>
+                        <option value="3">9</option>
+                        <option value="3">10</option>
+                        <option value="3">11</option>
+                        <option value="3">12</option>
+                        <option value="3">13</option>
+                        <option value="3">14</option>
+                        <option value="3">15</option>
+                        <option value="3">16</option>
+                        <option value="3">17</option>
+                        <option value="3">18</option>
+                        <option value="3">19</option>
+                        <option value="3">20</option>
                     </Field>
                     <label>Character's Class:</label>
-                    <Field type="text" name="class"/>
+                    <Field type="text" name="class" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                     </button>

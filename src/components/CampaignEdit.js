@@ -9,7 +9,7 @@ const initialCamp = {
     user_id: ""
 }
 
-const CampaignEdit = (props) => {
+const CampaignEdit = () => {
     const history = useHistory()
     const { id } = useParams()
     const [camp, setCamp] = useState(initialCamp)
@@ -46,33 +46,31 @@ const CampaignEdit = (props) => {
         getCampaign()
     }, [])
 
-    console.log(camp)
-
     return (
         <Formik
-        enableReinitialize
-        initialValues={{
-            name: camp.name,
-            desc: camp.desc,
-            user_id: camp.user_id
-        }}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-            editCampaign(values)
-            setSubmitting(false)
-            resetForm()
-        }}
-    >
-        {({ isSubmitting }) => (
-            <Form>
-                <label>Campaign Title:</label>
-                <Field type="name" name="name" />
-                <label>Campaign Description:</label>
-                <Field type="desc" name="desc" />
-                <button type="submit" disabled={isSubmitting}>
-                    Submit
+            enableReinitialize
+            initialValues={{
+                name: camp.name,
+                desc: camp.desc,
+                user_id: camp.user_id
+            }}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+                editCampaign(values)
+                setSubmitting(false)
+                resetForm()
+            }}
+        >
+            {({ isSubmitting }) => (
+                <Form>
+                    <label>Campaign Title:</label>
+                    <Field type="name" name="name" />
+                    <label>Campaign Description:</label>
+                    <Field type="desc" name="desc" />
+                    <button type="submit" disabled={isSubmitting}>
+                        Submit
                 </button>
-            </Form>
-        )}
+                </Form>
+            )}
         </Formik>
     )
 }

@@ -15,7 +15,6 @@ const CampaignInfo = (props) => {
     const getCamps = () => {
         axiosAuth().get(`campaigns/${id}`)
             .then(res => {
-                console.log(res.data)
                 setCamp(res.data.campaigns)
             })
             .catch(err => {
@@ -75,7 +74,7 @@ const CampaignInfo = (props) => {
 
             <section className="world-sec">
                 <h2>Worlds</h2>
-                <Link to="#">Create World</Link>
+                <Link to={`/campaign/${id}/add-world`}>Create World</Link>
                 {worlds.map(world => (
                     <div className="world-card" key={world.id}>
                         <h3>{world.name}</h3>

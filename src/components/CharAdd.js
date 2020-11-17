@@ -39,8 +39,6 @@ const CharAdd = () => {
                 <Form>
                     <label>Character's Name:</label>
                     <Field type="text" name="name" />
-                    <label>Character's Description:</label>
-                    <Field type="text" name="description" />
                     <label>Character's Ancestry:</label>
                     <Field type="text" name="ancestry" />
                     <label>Character's Level</label>
@@ -68,6 +66,8 @@ const CharAdd = () => {
                     </Field>
                     <label>Character's Class:</label>
                     <Field type="text" name="class" />
+                    <label>Character's Description:</label>
+                    <Field type="text" name="description" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                     </button>

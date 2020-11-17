@@ -23,7 +23,7 @@ const CampaignAdd = () => {
         <Formik
             initialValues={{
                 name: "",
-                desc: "",
+                description: "",
                 user_id: parseInt(id, 10)
             }}
             onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -37,7 +37,7 @@ const CampaignAdd = () => {
                     <label>Campaign Title:</label>
                     <Field type="text" name="name" />
                     <label>Campaign Description:</label>
-                    <Field type="text" name="desc" />
+                    <Field type="text" name="description" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                     </button>

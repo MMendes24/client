@@ -102,7 +102,7 @@ const CampaignInfo = (props) => {
             </section>
 
             <section className="countries-sec">
-                <Link to="#">Found Country</Link>
+                <Link to={`/campaign/${id}/add-country`}>Found Country</Link>
                 <h2>Countries</h2>
                 {countries.map(country => (
                     <div className="country-card" key={country.id}>

@@ -74,13 +74,11 @@ const CharEdit = () => {
                 <Form>
                     <label>Character's Name:</label>
                     <Field type="text" name="name" />
-                    <label>Character's Description:</label>
-                    <Field type="text" name="description" />
                     <label>Character's Ancestry:</label>
                     <Field type="text" name="ancestry" />
                     <label>Character's Level</label>
                     <Field as="select" name="level">
-                    <option value="1">1</option>
+                        <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -103,6 +101,8 @@ const CharEdit = () => {
                     </Field>
                     <label>Character's Class:</label>
                     <Field type="text" name="class" />
+                    <label>Description:</label>
+                    <Field type="text" name="description" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                 </button>

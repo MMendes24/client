@@ -5,7 +5,7 @@ import { Formik, Field, Form } from "formik"
 
 const initialCamp = {
     name: "",
-    desc: "",
+    description: "",
     user_id: ""
 }
 
@@ -21,7 +21,7 @@ const CampaignEdit = () => {
                 console.log("Data retrieved")
                 setCamp({
                     name: res.data.campaigns.name,
-                    desc: res.data.campaigns.desc,
+                    description: res.data.campaigns.description,
                     user_id: res.data.campaigns.user_id
                 })
             })
@@ -51,7 +51,7 @@ const CampaignEdit = () => {
             enableReinitialize
             initialValues={{
                 name: camp.name,
-                desc: camp.desc,
+                description: camp.description,
                 user_id: camp.user_id
             }}
             onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -65,7 +65,7 @@ const CampaignEdit = () => {
                     <label>Campaign Title:</label>
                     <Field type="text" name="name" />
                     <label>Campaign Description:</label>
-                    <Field type="text" name="desc" />
+                    <Field type="text" name="description" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                 </button>

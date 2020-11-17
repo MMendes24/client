@@ -20,6 +20,9 @@ import WorldEdit from "./components/WorldEdit"
 import CharAdd from "./components/CharAdd"
 import CharEdit from "./components/CharEdit"
 
+// import country components
+import CountryAdd from "./components/CountryAdd"
+
 import "./App.css"
 
 function App() {
@@ -27,11 +30,15 @@ function App() {
     <div className="App">
       <Switch>
 
+      <Route path="/campaign/:id/add-country" >
+          <CountryAdd />
+        </Route>
+
         <Route path="/campaign/:id/characters/:charId/edit-char" >
           <CharEdit />
         </Route>
 
-        <Route path="/campaign/:id/add-char/" >
+        <Route path="/campaign/:id/add-char" >
           <CharAdd />
         </Route>
 
@@ -39,8 +46,7 @@ function App() {
           <WorldEdit />
         </Route>
 
-
-        <Route path="/campaign/:id/add-world/" >
+        <Route path="/campaign/:id/add-world" >
           <WorldAdd />
         </Route>
 

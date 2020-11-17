@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import axiosAuth from "../utils/axiosAuth"
 
 import Campaign from "./Campaign"
@@ -35,6 +35,7 @@ const Dashboard = (props) => {
                     <Campaign key={campaign.id} campaign={campaign} />
                 ))}
             </section>
+            <Link to={`/add-campaign/${id}`}>New Campaign</Link>
         </div>
     )
 }

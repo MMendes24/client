@@ -10,7 +10,7 @@ const Register = () => {
                 console.log("Data sent")
             })
             .catch(res => {
-                console.log("Data rejected")
+                console.error("Data rejected")
             })
     }
 

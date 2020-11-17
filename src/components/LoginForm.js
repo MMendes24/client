@@ -15,7 +15,7 @@ const LoginForm = () => {
                 history.push(`/home/${id}`)
             })
             .catch(err => {
-                console.log("are you serious?")
+                console.error("Invalid data")
             })
     }
 

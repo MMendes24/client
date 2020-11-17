@@ -15,7 +15,6 @@ const CampaignInfo = (props) => {
     const getCamps = () => {
         axiosAuth().get(`campaigns/${id}`)
             .then(res => {
-                console.log(res.data)
                 setCamp(res.data.campaigns)
             })
             .catch(err => {
@@ -69,18 +68,18 @@ const CampaignInfo = (props) => {
                 <h1>Campaign</h1>
                 <h3>{camp.name}</h3>
                 <h3>{camp.desc}</h3>
-                <Link to="#">Edit</Link>
+                <Link to={`/campaign/${id}/edit`}>Edit</Link>
                 <button>Delete</button>
             </section>
 
             <section className="world-sec">
                 <h2>Worlds</h2>
-                <Link to="#">Create World</Link>
+                <Link to={`/campaign/${id}/add-world`}>Create World</Link>
                 {worlds.map(world => (
                     <div className="world-card" key={world.id}>
                         <h3>{world.name}</h3>
                         <p>Description: {world.description}</p>
-                        <Link to="#">Edit</Link>
+                        <Link to={`/campaign/${id}/worlds/${world.id}/edit-world`}>Edit</Link>
                         <button>Delete</button>
                     </div>
                 ))}
@@ -88,7 +87,7 @@ const CampaignInfo = (props) => {
 
             <section className="char-sec">
                 <h2>Characters</h2>
-                <Link to="#">Add Character</Link>
+                <Link to={`/campaign/${id}/add-char`}>Add Character</Link>
                 {chars.map(char => (
                     <div className="char-card" key={char.id}>
                         <h3>{char.name}</h3>
@@ -96,14 +95,14 @@ const CampaignInfo = (props) => {
                         <p>Ancestry: {char.ancestry}</p>
                         <p>Level: {char.level}</p>
                         <p>Class: {char.class}</p>
-                        <Link to="#">Edit</Link>
+                        <Link to={`/campaign/${id}/characters/${char.id}/edit-char`}>Edit</Link>
                         <button>Delete</button>
                     </div>
                 ))}
             </section>
 
             <section className="countries-sec">
-                <Link to="#">Found Country</Link>
+                <Link to={`/campaign/${id}/add-country`}>Found Country</Link>
                 <h2>Countries</h2>
                 {countries.map(country => (
                     <div className="country-card" key={country.id}>

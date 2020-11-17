@@ -22,23 +22,25 @@ const CampaignAdd = () => {
     return (
         <Formik
             initialValues={{
-                username: "",
-                password: "",
-                email: "",
+                name: "",
+                description: "",
+                user_id: parseInt(id, 10)
             }}
             onSubmit={(values, { setSubmitting, resetForm }) => {
+                createCampaign(values)
                 setSubmitting(false)
                 resetForm()
             }}
         >
             {({ isSubmitting }) => (
                 <Form>
-                    <Field type="username" name="username" />
-                    <Field type="password" name="password" />
-                    <Field type="email" name="email" />
+                    <label>Campaign Title:</label>
+                    <Field type="text" name="name" />
+                    <label>Campaign Description:</label>
+                    <Field type="text" name="description" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
-                        </button>
+                    </button>
                 </Form>
             )}
         </Formik>

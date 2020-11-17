@@ -9,7 +9,9 @@ const Dashboard = (props) => {
     const { id } = useParams()
 
     const getCampaigns = () => {
-        axiosAuth().get(`campaigns/user-campaigns/${id}`)
+        const verify = localStorage.getItem("user")
+        if (verify === id) {
+            axiosAuth().get(`campaigns/user-campaigns/${id}`)
             .then(res => {
                 console.log(res.data)
                 setCampaigns(res.data.campaigns)
@@ -17,6 +19,9 @@ const Dashboard = (props) => {
             .catch(err => {
                 console.log("didn't work")
             })
+        } else {
+            console.error("wrong user")
+        }
     }
 
     useEffect(() => {

@@ -18,6 +18,7 @@ import WorldEdit from "./components/WorldEdit"
 
 // import character components
 import CharAdd from "./components/CharAdd"
+import CharEdit from "./components/CharEdit"
 
 import "./App.css"
 
@@ -25,6 +26,10 @@ function App() {
   return (
     <div className="App">
       <Switch>
+
+        <Route path="/campaign/:id/characters/:charId/edit-char" >
+          <CharEdit />
+        </Route>
 
         <Route path="/campaign/:id/add-char/" >
           <CharAdd />

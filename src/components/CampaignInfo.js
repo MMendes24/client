@@ -95,7 +95,7 @@ const CampaignInfo = (props) => {
                         <p>Ancestry: {char.ancestry}</p>
                         <p>Level: {char.level}</p>
                         <p>Class: {char.class}</p>
-                        <Link to="#">Edit</Link>
+                        <Link to={`/campaign/${id}/characters/${char.id}/edit-char`}>Edit</Link>
                         <button>Delete</button>
                     </div>
                 ))}

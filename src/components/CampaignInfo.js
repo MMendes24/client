@@ -87,7 +87,7 @@ const CampaignInfo = (props) => {
 
             <section className="char-sec">
                 <h2>Characters</h2>
-                <Link to="#">Add Character</Link>
+                <Link to={`/campaign/${id}/add-char`}>Add Character</Link>
                 {chars.map(char => (
                     <div className="char-card" key={char.id}>
                         <h3>{char.name}</h3>

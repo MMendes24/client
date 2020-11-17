@@ -64,9 +64,9 @@ const WorldEdit = () => {
             {({ isSubmitting }) => (
                 <Form>
                     <label>World Title:</label>
-                    <Field type="name" name="name" />
+                    <Field type="text" name="name" />
                     <label>World Description:</label>
-                    <Field type="description" name="description" />
+                    <Field type="text" name="description" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                 </button>

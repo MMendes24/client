@@ -63,9 +63,9 @@ const CampaignEdit = () => {
             {({ isSubmitting }) => (
                 <Form>
                     <label>Campaign Title:</label>
-                    <Field type="name" name="name" />
+                    <Field type="text" name="name" />
                     <label>Campaign Description:</label>
-                    <Field type="desc" name="desc" />
+                    <Field type="text" name="desc" />
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                 </button>

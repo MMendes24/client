@@ -19,7 +19,6 @@ const WorldEdit = () => {
             .get(`https://campaign-journal-api.herokuapp.com/api/campaigns/${id}/worlds/${worldid}`)
             .then(res => {
                 console.log("Data retrieved")
-                console.log(res.data)
                 setWorld({
                     name: res.data.world.name,
                     description: res.data.world.description,

@@ -22,6 +22,7 @@ import CharEdit from "./components/CharEdit"
 
 // import country components
 import CountryAdd from "./components/CountryAdd"
+import CountryEdit from "./components/CountryEdit"
 
 import "./App.css"
 
@@ -30,7 +31,11 @@ function App() {
     <div className="App">
       <Switch>
 
-      <Route path="/campaign/:id/add-country" >
+        <Route path="/campaign/:id/countries/:countryId/edit-country">
+          <CountryEdit />
+        </Route>
+
+        <Route path="/campaign/:id/add-country" >
           <CountryAdd />
         </Route>
 

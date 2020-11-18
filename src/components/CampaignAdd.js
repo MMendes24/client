@@ -6,9 +6,11 @@ import * as Yup from "yup"
 
 const campaignAddSchema = Yup.object({
     name: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+    description: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
 })
 
 
@@ -24,6 +26,7 @@ const CampaignAdd = () => {
                 history.push(`/home/${id}`)
             })
             .catch(res => {
+                console.log(values)
                 console.error("Data rejected")
             })
     }
@@ -51,6 +54,9 @@ const CampaignAdd = () => {
                     ) : null}
                     <label>Campaign Description:</label>
                     <Field type="text" name="description" />
+                    {errors.description && touched.description ? (
+                        <div className="error">{errors.description}</div>
+                    ) : null}
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                     </button>

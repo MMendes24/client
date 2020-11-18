@@ -31,8 +31,11 @@ const RegisterForm = () => {
             >
                 {({ isSubmitting }) => (
                     <Form>
+                        <label>Username:</label>
                         <Field type="username" name="username" />
+                        <label>Password:</label>
                         <Field type="password" name="password" />
+                        <label>Email:</label>
                         <Field type="email" name="email" />
                         <button type="submit" disabled={isSubmitting}>
                             Submit

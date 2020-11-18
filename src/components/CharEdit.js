@@ -2,6 +2,23 @@ import React, { useEffect, useState } from "react"
 import axiosAuth from "../utils/axiosAuth"
 import { useHistory, useParams } from "react-router-dom"
 import { Formik, Field, Form } from "formik"
+import * as Yup from "yup"
+
+const charEditchema = Yup.object({
+    name: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+    description: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+    ancestry: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+    class: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+})
+
 
 const initialChar = {
     campaign_id: "",
@@ -64,18 +81,29 @@ const CharEdit = () => {
                 ancestry: char.ancestry,
                 description: char.description,
             }}
+            validationSchema={charEditchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 editChar(values)
                 setSubmitting(false)
                 resetForm()
             }}
         >
-            {({ isSubmitting }) => (
+            {({ errors, touched, isSubmitting }) => (
                 <Form>
                     <label>Character's Name:</label>
                     <Field type="text" name="name" />
+
+                    {errors.name && touched.name ? (
+                        <div className="error">{errors.name}</div>
+                    ) : null}
+
                     <label>Character's Ancestry:</label>
                     <Field type="text" name="ancestry" />
+
+                    {errors.ancestry && touched.ancestry ? (
+                        <div className="error">{errors.ancestry}</div>
+                    ) : null}
+
                     <label>Character's Level</label>
                     <Field as="select" name="level">
                         <option value="1">1</option>
@@ -99,10 +127,21 @@ const CharEdit = () => {
                         <option value="19">19</option>
                         <option value="20">20</option>
                     </Field>
+
                     <label>Character's Class:</label>
                     <Field type="text" name="class" />
-                    <label>Description:</label>
+
+                    {errors.class && touched.class ? (
+                        <div className="error">{errors.class}</div>
+                    ) : null}
+
+                    <label>Character's Description:</label>
                     <Field type="text" name="description" />
+
+                    {errors.description && touched.description ? (
+                        <div className="error">{errors.description}</div>
+                    ) : null}
+
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                 </button>

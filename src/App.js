@@ -7,6 +7,9 @@ import LoginForm from "./components/LoginForm"
 import RegisterForm from "./components/RegisterForm"
 import Dashboard from "./components/Dashboard"
 
+// import private routing
+import PrivateRoute from "./components/PrivateRoute"
+
 // import campaign components 
 import CampaignInfo from "./components/CampaignInfo"
 import CampaignAdd from "./components/CampaignAdd"
@@ -32,45 +35,25 @@ function App() {
     <div className="App">
       <Switch>
 
-        <Route path="/campaign/:id/countries/:countryId/edit-country">
-          <CountryEdit />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id/countries/:countryId/edit-country" component={CountryEdit} />
 
-        <Route path="/campaign/:id/add-country" >
-          <CountryAdd />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id/add-country" component={CountryAdd} />
 
-        <Route path="/campaign/:id/characters/:charId/edit-char" >
-          <CharEdit />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id/characters/:charId/edit-char" component={CharEdit} />
 
-        <Route path="/campaign/:id/add-char" >
-          <CharAdd />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id/add-char" component={CharAdd} />
 
-        <Route path="/campaign/:id/worlds/:worldid/edit-world" >
-          <WorldEdit />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id/worlds/:worldid/edit-world" component={WorldEdit} />
 
-        <Route path="/campaign/:id/add-world" >
-          <WorldAdd />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id/add-world" component={WorldAdd} />
 
-        <Route path="/add-campaign/:id" >
-          <CampaignAdd />
-        </Route>
+        <PrivateRoute exact path="/add-campaign/:id" component={CampaignAdd} />
 
-        <Route path="/campaign/:id/edit" >
-          <CampaignEdit />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id/edit" component={CampaignEdit} />
 
-        <Route path="/campaign/:id" >
-          <CampaignInfo />
-        </Route>
+        <PrivateRoute exact path="/campaign/:id" component={CampaignInfo} />
 
-        <Route path="/home/:id" >
-          <Dashboard />
-        </Route>
+        <PrivateRoute exact path="/home/:id" component={Dashboard} />
 
         <Route path="/register" >
           <RegisterForm />

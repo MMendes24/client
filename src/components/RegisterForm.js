@@ -1,6 +1,19 @@
 import React from "react"
 import axios from "axios"
 import { Formik, Field, Form } from "formik"
+import * as Yup from "yup"
+
+const registerSchema = Yup.object({
+    username: Yup.string()
+        .max(256, 'Maximum length of 256 characters and it must be unique.')
+        .required('Required.'),
+    password: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+    email: Yup.string().email()
+        .max(256, 'Enter a valid and unique email address.')
+        .required('Required.'),
+})
 
 const RegisterForm = () => {
 
@@ -23,20 +36,36 @@ const RegisterForm = () => {
                     password: "",
                     email: "",
                 }}
+                validationSchema={registerSchema}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                     userRegister(values)
                     setSubmitting(false)
                     resetForm()
                 }}
             >
-                {({ isSubmitting }) => (
+                {({ errors, touched, isSubmitting }) => (
                     <Form>
                         <label>Username:</label>
                         <Field type="username" name="username" />
+
+                        {errors.username && touched.username ? (
+                            <div className="error">{errors.username}</div>
+                        ) : null}
+
                         <label>Password:</label>
                         <Field type="password" name="password" />
+
+                        {errors.password && touched.password ? (
+                            <div className="error">{errors.password}</div>
+                        ) : null}
+
                         <label>Email:</label>
                         <Field type="email" name="email" />
+
+                        {errors.email && touched.email ? (
+                            <div className="error">{errors.email}</div>
+                        ) : null}
+
                         <button type="submit" disabled={isSubmitting}>
                             Submit
                         </button>

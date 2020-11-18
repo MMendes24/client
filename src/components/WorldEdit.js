@@ -2,6 +2,16 @@ import React, { useEffect, useState } from "react"
 import axiosAuth from "../utils/axiosAuth"
 import { useHistory, useParams } from "react-router-dom"
 import { Formik, Field, Form } from "formik"
+import * as Yup from "yup"
+
+const worldEditSchema = Yup.object({
+    name: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+    description: Yup.string()
+        .max(256, 'Maximum length of 256 characters.')
+        .required('Required.'),
+})
 
 const initialWorld = {
     name: "",
@@ -19,7 +29,6 @@ const WorldEdit = () => {
             .get(`https://campaign-journal-api.herokuapp.com/api/campaigns/${id}/worlds/${worldid}`)
             .then(res => {
                 console.log("Data retrieved")
-                console.log(res.data)
                 setWorld({
                     name: res.data.world.name,
                     description: res.data.world.description,
@@ -55,18 +64,29 @@ const WorldEdit = () => {
                 description: world.description,
                 campaign_id: world.campaign_id
             }}
+            validationSchema={worldEditSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 editWorld(values)
                 setSubmitting(false)
                 resetForm()
             }}
         >
-            {({ isSubmitting }) => (
+            {({ errors, touched, isSubmitting }) => (
                 <Form>
                     <label>World Title:</label>
                     <Field type="text" name="name" />
+
+                    {errors.name && touched.name ? (
+                        <div className="error">{errors.name}</div>
+                    ) : null}
+
                     <label>World Description:</label>
                     <Field type="text" name="description" />
+
+                    {errors.description && touched.description ? (
+                        <div className="error">{errors.description}</div>
+                    ) : null}
+
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                 </button>

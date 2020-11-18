@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom"
 
 // import app components 
 import LoginForm from "./components/LoginForm"
-import Register from "./components/Register"
+import RegisterForm from "./components/RegisterForm"
 import Dashboard from "./components/Dashboard"
 
 // import campaign components 
@@ -22,15 +22,21 @@ import CharEdit from "./components/CharEdit"
 
 // import country components
 import CountryAdd from "./components/CountryAdd"
+import CountryEdit from "./components/CountryEdit"
 
 import "./App.css"
+
 
 function App() {
   return (
     <div className="App">
       <Switch>
 
-      <Route path="/campaign/:id/add-country" >
+        <Route path="/campaign/:id/countries/:countryId/edit-country">
+          <CountryEdit />
+        </Route>
+
+        <Route path="/campaign/:id/add-country" >
           <CountryAdd />
         </Route>
 
@@ -67,7 +73,7 @@ function App() {
         </Route>
 
         <Route path="/register" >
-          <Register />
+          <RegisterForm />
         </Route>
 
         <Route exact path="/" >

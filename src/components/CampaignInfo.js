@@ -110,7 +110,7 @@ const CampaignInfo = (props) => {
                         <p>Description: {country.description}</p>
                         <p>Ruler: {country.ruler}</p>
                         <p>Founded: {country.founded}</p>
-                        <Link to="#">Edit</Link>
+                        <Link to={`/campaign/${id}/countries/${country.id}/edit-country`}>Edit</Link>
                         <button>Delete</button>
                     </div>
                 ))}

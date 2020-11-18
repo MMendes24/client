@@ -2,6 +2,16 @@ import React from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios"
 import { Formik, Form, Field } from "formik"
+import * as Yup from "yup"
+
+const loginSchema = Yup.object({
+    username: Yup.string()
+        .max(256, "Please enter a valid username.")
+        .required("Required."),
+    password: Yup.string()
+        .max(256, "Please enter a valid password.")
+        .required("Required."),
+})
 
 const LoginForm = () => {
     const history = useHistory()
@@ -29,16 +39,29 @@ const LoginForm = () => {
                 <h2>Login</h2>
                 <Formik
                     initialValues={{ username: "", password: "" }}
+                    validationSchema={loginSchema}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         userLogin(values)
                         setSubmitting(false)
                         resetForm()
                     }}
                 >
-                    {({ isSubmitting }) => (
+                    {({ errors, touched, isSubmitting }) => (
                         <Form>
+                            <label>Username:</label>
                             <Field type="username" name="username" />
+
+                            {errors.username && touched.username ? (
+                                <div className="error">{errors.username}</div>
+                            ) : null}
+
+                            <label>Password:</label>
                             <Field type="password" name="password" />
+
+                            {errors.password && touched.password ? (
+                                <div className="error">{errors.password}</div>
+                            ) : null}
+
                             <button type="submit" disabled={isSubmitting}>
                                 Submit
                         </button>

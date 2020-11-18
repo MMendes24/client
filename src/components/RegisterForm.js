@@ -2,7 +2,7 @@ import React from "react"
 import axios from "axios"
 import { Formik, Field, Form } from "formik"
 
-const Register = () => {
+const RegisterForm = () => {
 
     const userRegister = (values) => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/register", values)
@@ -10,7 +10,7 @@ const Register = () => {
                 console.log("Data sent")
             })
             .catch(res => {
-                console.error("Data rejected")
+                console.log("Data rejected")
             })
     }
 
@@ -44,4 +44,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default RegisterForm

@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom"
 
 // import app components 
 import LoginForm from "./components/LoginForm"
-import Register from "./components/Register"
+import RegisterForm from "./components/RegisterForm"
 import Dashboard from "./components/Dashboard"
 
 // import campaign components 
@@ -25,6 +25,7 @@ import CountryAdd from "./components/CountryAdd"
 import CountryEdit from "./components/CountryEdit"
 
 import "./App.css"
+
 
 function App() {
   return (
@@ -72,7 +73,7 @@ function App() {
         </Route>
 
         <Route path="/register" >
-          <Register />
+          <RegisterForm />
         </Route>
 
         <Route exact path="/" >

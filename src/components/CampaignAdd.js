@@ -49,14 +49,18 @@ const CampaignAdd = () => {
                 <Form>
                     <label>Campaign Title:</label>
                     <Field type="text" name="name" />
+
                     {errors.name && touched.name ? (
                         <div className="error">{errors.name}</div>
                     ) : null}
+
                     <label>Campaign Description:</label>
                     <Field type="text" name="description" />
+
                     {errors.description && touched.description ? (
                         <div className="error">{errors.description}</div>
                     ) : null}
+                    
                     <button type="submit" disabled={isSubmitting}>
                         Submit
                     </button>

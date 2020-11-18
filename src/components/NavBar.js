@@ -1,5 +1,6 @@
 import React from "react"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import Link from '@material-ui/core/Link';
 
 const NavBar = () => {
     const id = localStorage.getItem("user")
@@ -14,8 +15,24 @@ const NavBar = () => {
         <div>
             <h2>Campaign Journal</h2>
             <nav>
-                <Link to={`/home/${id}`}>Home</Link>
-                <button onClick={logOut}>Log Out</button>
+
+                <Link
+                    component="button"
+                    variant="button"
+                    onClick={() => {
+                        history.push(`/home/${id}`);
+                    }}
+                >
+                    Home
+                </Link>
+
+                <Link
+                    component="button"
+                    variant="button"
+                    onClick={logOut}
+                >
+                    Log Out
+                </Link>
             </nav>
 
         </div>

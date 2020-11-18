@@ -6,6 +6,7 @@ import { Switch, Route } from "react-router-dom"
 import LoginForm from "./components/LoginForm"
 import RegisterForm from "./components/RegisterForm"
 import Dashboard from "./components/Dashboard"
+import NavBar from "./components/NavBar"
 
 // import private routing
 import PrivateRoute from "./components/PrivateRoute"
@@ -33,6 +34,7 @@ import "./App.css"
 function App() {
   return (
     <div className="App">
+      <NavBar />
       <Switch>
 
         <PrivateRoute exact path="/campaign/:id/countries/:countryId/edit-country" component={CountryEdit} />

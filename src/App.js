@@ -29,10 +29,11 @@ import CountryEdit from "./components/CountryEdit"
 
 // styles
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import "./App.css"
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
+
   palette: {
     type: 'dark',
     primary: {
@@ -40,10 +41,14 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: "#ba68c8"
+    },
+    error: {
+      main: "#e57373"
     }
   },
 });
 
+theme = responsiveFontSizes(theme);
 
 function App() {
   return (

@@ -4,6 +4,23 @@ import { useHistory, useParams } from "react-router-dom"
 import { Formik, Field, Form } from "formik"
 import * as Yup from "yup"
 
+//styling
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+    buttonStyles: {
+        margin: theme.spacing(2),
+    }
+}));
+
 const campaignAddSchema = Yup.object({
     name: Yup.string()
         .max(256, 'Maximum length of 256 characters.')
@@ -15,6 +32,9 @@ const campaignAddSchema = Yup.object({
 
 
 const CampaignAdd = () => {
+    // for material ui
+    const classes = useStyles()
+
     const history = useHistory()
     const { id } = useParams()
 
@@ -47,24 +67,33 @@ const CampaignAdd = () => {
         >
             {({ errors, touched, isSubmitting }) => (
                 <Form>
-                    <label>Campaign Title:</label>
-                    <Field type="text" name="name" />
+                    <Grid
+                        className={classes.root}
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <Typography variant="h3" gutterBottom>Campaign Title:</Typography>
+                        <Field type="text" name="name" />
 
-                    {errors.name && touched.name ? (
-                        <div className="error">{errors.name}</div>
-                    ) : null}
+                        {errors.name && touched.name ? (
+                            <Typography variant="body1" color="error">{errors.name}</Typography>
+                        ) : null}
 
-                    <label>Campaign Description:</label>
-                    <Field type="text" name="description" />
+                        <Typography variant="h3" gutterBottom>Campaign Description:</Typography>
+                        <Field type="text" name="description" />
 
-                    {errors.description && touched.description ? (
-                        <div className="error">{errors.description}</div>
-                    ) : null}
-                    
-                    <button type="submit" disabled={isSubmitting}>
-                        Submit
-                    </button>
+                        {errors.description && touched.description ? (
+                            <Typography variant="body1" color="error">{errors.description}</Typography>
+                        ) : null}
+
+                        <Button color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
+                            Submit
+                    </Button>
+                    </Grid>
                 </Form>
+
             )}
         </Formik>
     )

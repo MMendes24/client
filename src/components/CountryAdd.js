@@ -115,7 +115,7 @@ const CountryAdd = () => {
                             <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.founded}</Typography>
                         ) : null}
 
-                        <Typography variant="h3" gutterBottom>Character's Description:</Typography>
+                        <Typography variant="h3" gutterBottom>Country's Description:</Typography>
                         <Field className={classes.descClass} component="textarea" rows="12" name="description" />
 
                         {errors.description && touched.description ? (

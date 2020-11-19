@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     descClass: {
         fontSize: 16,
         width: "20%"
+    },
+    error: {
+        fontSize: 14
     }
 }));
 
@@ -114,14 +117,14 @@ const CampaignEdit = () => {
                         <Field className={classes.categoryClass} type="text" name="name" />
 
                         {errors.name && touched.name ? (
-                            <div className="error">{errors.name}</div>
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.name}</Typography>
                         ) : null}
 
                         <Typography variant="h3" gutterBottom>Campaign Description:</Typography>
                         <Field className={classes.descClass} component="textarea" rows="12" name="description" />
 
                         {errors.description && touched.description ? (
-                            <div className="error">{errors.description}</div>
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.description}</Typography>
                         ) : null}
                         <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
                             Edit

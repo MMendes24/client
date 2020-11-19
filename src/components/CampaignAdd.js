@@ -13,11 +13,24 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
-            margin: theme.spacing(1),
+            margin: theme.spacing(2),
         },
     },
     buttonStyles: {
+        fontSize: 14,
         margin: theme.spacing(2),
+        width: "10%"
+    },
+    categoryClass: {
+        fontSize: 16,
+        width: "20%"
+    },
+    descClass: {
+        fontSize: 16,
+        width: "20%"
+    },
+    error: {
+        fontSize: 14
     }
 }));
 
@@ -75,25 +88,23 @@ const CampaignAdd = () => {
                         alignItems="center"
                     >
                         <Typography variant="h3" gutterBottom>Campaign Title:</Typography>
-                        <Field type="text" name="name" />
+                        <Field className={classes.categoryClass} type="text" name="name" />
 
                         {errors.name && touched.name ? (
-                            <Typography variant="body1" color="error">{errors.name}</Typography>
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.name}</Typography>
                         ) : null}
 
                         <Typography variant="h3" gutterBottom>Campaign Description:</Typography>
-                        <Field type="text" name="description" />
+                        <Field className={classes.descClass} component="textarea" rows="12" name="description" />
 
                         {errors.description && touched.description ? (
-                            <Typography variant="body1" color="error">{errors.description}</Typography>
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.description}</Typography>
                         ) : null}
-
-                        <Button color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
+                        <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
                             Create
                         </Button>
                     </Grid>
                 </Form>
-
             )}
         </Formik>
     )

@@ -20,10 +20,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = () => {
+    // for material-ui
+    const classes = useStyles();
+
     const id = localStorage.getItem("user")
     const history = useHistory()
-
-    const classes = useStyles()
 
     const logOut = () => {
         localStorage.clear()

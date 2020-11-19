@@ -100,7 +100,6 @@ const CampaignInfo = (props) => {
             direction="column"
             justify="center"
             alignItems="center"
-
         >
             <section>
                 <Typography variant="h1" gutterBottom>

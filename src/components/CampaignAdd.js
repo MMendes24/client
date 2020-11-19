@@ -89,8 +89,8 @@ const CampaignAdd = () => {
                         ) : null}
 
                         <Button color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
-                            Submit
-                    </Button>
+                            Create
+                        </Button>
                     </Grid>
                 </Form>
 

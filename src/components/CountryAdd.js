@@ -4,6 +4,36 @@ import { useHistory, useParams } from "react-router-dom"
 import { Formik, Field, Form } from "formik"
 import * as Yup from "yup"
 
+//styling
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(2),
+        },
+    },
+    buttonStyles: {
+        fontSize: 14,
+        margin: theme.spacing(2),
+        width: "10%"
+    },
+    categoryClass: {
+        fontSize: 16,
+        width: "20%"
+    },
+    descClass: {
+        fontSize: 16,
+        width: "20%"
+    },
+    error: {
+        fontSize: 14
+    }
+}));
+
 const countryAddchema = Yup.object({
     name: Yup.string()
         .max(256, 'Maximum length of 256 characters.')
@@ -20,6 +50,9 @@ const countryAddchema = Yup.object({
 })
 
 const CountryAdd = () => {
+    // for material ui
+    const classes = useStyles()
+
     const history = useHistory()
     const { id } = useParams()
 
@@ -53,38 +86,46 @@ const CountryAdd = () => {
         >
             {({ errors, touched, isSubmitting }) => (
                 <Form>
-                    <label>Country's Name:</label>
-                    <Field type="text" name="name" />
+                    <Grid
+                        className={classes.root}
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <Typography variant="h3" gutterBottom>Country's Name:</Typography>
+                        <Field className={classes.categoryClass} type="text" name="name" />
 
-                    {errors.name && touched.name ? (
-                        <div className="error">{errors.name}</div>
-                    ) : null}
+                        {errors.name && touched.name ? (
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.name}</Typography>
+                        ) : null}
 
 
-                    <label>Country's Ruler:</label>
-                    <Field type="text" name="ruler" />
+                        <Typography variant="h3" gutterBottom>Country's Ruler:</Typography>
+                        <Field className={classes.categoryClass} type="text" name="ruler" />
 
-                    {errors.ruler && touched.ruler ? (
-                        <div className="error">{errors.ruler}</div>
-                    ) : null}
+                        {errors.ruler && touched.ruler ? (
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.ruler}</Typography>
+                        ) : null}
 
-                    <label>Founded</label>
-                    <Field type="text" name="founded" />
+                        <Typography variant="h3" gutterBottom>Founded</Typography>
+                        <Field className={classes.categoryClass} type="text" name="founded" />
 
-                    {errors.founded && touched.founded ? (
-                        <div className="error">{errors.founded}</div>
-                    ) : null}
+                        {errors.founded && touched.founded ? (
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.founded}</Typography>
+                        ) : null}
 
-                    <label>Description:</label>
-                    <Field type="text" name="description" />
+                        <Typography variant="h3" gutterBottom>Character's Description:</Typography>
+                        <Field className={classes.descClass} component="textarea" rows="12" name="description" />
 
-                    {errors.description && touched.description ? (
-                        <div className="error">{errors.description}</div>
-                    ) : null}
+                        {errors.description && touched.description ? (
+                            <Typography className={classes.error} variant="body1" gutterBottom color="error">{errors.description}</Typography>
+                        ) : null}
 
-                    <button type="submit" disabled={isSubmitting}>
-                        Submit
-                    </button>
+                        <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
+                            Edit
+                        </Button>
+                    </Grid>
                 </Form>
             )}
         </Formik>

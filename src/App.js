@@ -33,17 +33,17 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import "./App.css"
 
-const theme = createMuiTheme();
-
-theme.typography.h1 = {
-  fontSize: '1.2rem',
-  '@media (min-width:600px)': {
-    fontSize: '1.5rem',
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: "#81c784"
+    },
+    secondary: {
+      main: "#ba68c8"
+    }
   },
-  [theme.breakpoints.up('md')]: {
-    fontSize: '5rem',
-  },
-};
+});
 
 
 function App() {

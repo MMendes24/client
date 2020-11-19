@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams, useHistory, Link } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import axiosAuth from "../utils/axiosAuth"
 
 //styling
@@ -15,12 +15,16 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
-            margin: theme.spacing(3),
+            margin: theme.spacing(1),
+            width: "50%"
         },
     },
-    margin: {
+    cardStyles: {
         margin: theme.spacing(1),
-        width: "50%"
+        background: "#262626"
+    },
+    buttonGeneric: {
+        margin: theme.spacing(0.5),
     }
 }));
 
@@ -95,57 +99,41 @@ const CampaignInfo = (props) => {
             container
             direction="column"
             justify="center"
-            align="center"
+            alignItems="center"
 
         >
-            <Grid
-                className="camp-sec"
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-            >
+            <section>
                 <Typography variant="h1" gutterBottom>
                     Campaign
                 </Typography>
                 <Typography variant="h3" gutterBottom>{camp.name}</Typography>
                 <Typography variant="h3" gutterBottom>{camp.desc}</Typography>
-                <Button variant="contained" color="primary" onClick={() => history.push(`/campaign/${id}/edit`)}>Edit</Button>
-                <Button variant="contained" color="secondary">Delete</Button>
-            </Grid>
+                <Button className={classes.buttonGeneric} variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/edit`)}>Edit</Button>
+                <Button className={classes.buttonGeneric} variant="outlined" color="secondary">Delete</Button>
+            </section>
 
-            <Grid
-                className="world-sec"
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-            >
+            <section>
                 <Typography variant="h2" gutterBottom>Worlds</Typography>
-                <Button variant="contained" color="primary" onClick={() => history.push(`/campaign/${id}/add-world`)}>Create World</Button>
+                <Button variant="contained" size="large" color="primary" onClick={() => history.push(`/campaign/${id}/add-world`)}>Create World</Button>
                 {worlds.map(world => (
-                    <Card className={classes.margin} key={world.id}>
+                    <Card className={classes.cardStyles} key={world.id}>
                         <CardContent>
                             <Typography variant="h3" gutterBottom>{world.name}</Typography>
                             <Typography variant="h5" gutterBottom>Description: {world.description}</Typography>
                         </CardContent>
-                        <Button variant="contained" color="primary" onClick={() => history.push(`/campaign/${id}/worlds/${world.id}/edit-world`)}>Edit</Button>
-                        <Button variant="contained" color="secondary">Delete</Button>
+                        <CardActions>
+                            <Button variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/worlds/${world.id}/edit-world`)}>Edit</Button>
+                            <Button variant="outlined" color="secondary">Delete</Button>
+                        </CardActions>
                     </Card>
                 ))}
-            </Grid>
+            </section>
 
-            <Grid
-                className="char-sec"
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-            >
+            <section>
                 <Typography variant="h2" gutterBottom>Characters</Typography>
-                <Button variant="contained" color="primary" onClick={() => history.push(`/campaign/${id}/add-char`)}>Add Character</Button>
+                <Button variant="contained" size="large" color="primary" onClick={() => history.push(`/campaign/${id}/add-char`)}>Add Character</Button>
                 {chars.map(char => (
-                    <Card className={classes.margin} key={char.id}>
+                    <Card className={classes.cardStyles} key={char.id}>
                         <CardContent>
                             <Typography variant="h3" gutterBottom>{char.name}</Typography>
                             <Typography variant="h5" gutterBottom>Description: {char.description}</Typography>
@@ -153,34 +141,32 @@ const CampaignInfo = (props) => {
                             <Typography variant="h5" gutterBottom>Level: {char.level}</Typography>
                             <Typography variant="h5" gutterBottom>Class: {char.class}</Typography>
                         </CardContent>
-                        <Button variant="contained" color="primary" onClick={() => history.push(`/campaign/${id}/characters/${char.id}/edit-char`)}>Edit</Button>
-                        <Button variant="contained" color="secondary">Delete</Button>
+                        <CardActions>
+                            <Button variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/characters/${char.id}/edit-char`)}>Edit</Button>
+                            <Button variant="outlined" color="secondary">Delete</Button>
+                        </CardActions>
                     </Card>
                 ))}
-            </Grid>
+            </section>
 
-            <Grid
-                className="countries-sec"
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-            >
+            <section>
                 <Typography variant="h2" gutterBottom>Countries</Typography>
-                <Button variant="contained" color="primary" onClick={() => history.push(`/campaign/${id}/add-country`)}>Found Country</Button>
+                <Button variant="contained" size="large" color="primary" onClick={() => history.push(`/campaign/${id}/add-country`)}>Found Country</Button>
                 {countries.map(country => (
-                    <Card className={classes.margin} key={country.id}>
+                    <Card className={classes.cardStyles} key={country.id}>
                         <CardContent>
                             <Typography variant="h3" gutterBottom>{country.name}</Typography>
                             <Typography variant="h5">Description: {country.description}</Typography>
                             <Typography variant="h5">Ruler: {country.ruler}</Typography>
                             <Typography variant="h5">Founded: {country.founded}</Typography>
                         </CardContent>
-                        <Button variant="contained" color="primary" onClick={() => history.push(`/campaign/${id}/countries/${country.id}/edit-country`)}>Edit</Button>
-                        <Button variant="contained" color="secondary">Delete</Button>
+                        <CardActions>
+                            <Button variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/countries/${country.id}/edit-country`)}>Edit</Button>
+                            <Button variant="outlined" color="secondary">Delete</Button>
+                        </CardActions>
                     </Card>
                 ))}
-            </Grid>
+            </section>
         </Grid>
     )
 }

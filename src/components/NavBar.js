@@ -10,11 +10,11 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
-            margin: theme.spacing(1),
+            margin: theme.spacing(2),
         },
     },
     navLink: {
-        fontSize: 18,
+        fontSize: 20,
         margin: theme.spacing(1),
     }
 }));
@@ -32,13 +32,15 @@ const NavBar = () => {
 
     return (
         <Grid
-        className={classes.root}
-        container
-        direction="row"
-        justify="flex-start`"
-        alignItems="center"
+            className={classes.root}
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
         >
-            <Typography variant="h2" gutterBottom>Campaign Journal</Typography>
+            <header>
+                <Typography variant="h2" gutterBottom>Campaign Journal</Typography>
+            </header>
             <nav>
 
                 <Link
@@ -56,6 +58,7 @@ const NavBar = () => {
                     className={classes.navLink}
                     component="button"
                     variant="button"
+                    color="secondary"
                     onClick={logOut}
                 >
                     Log Out

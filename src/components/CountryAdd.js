@@ -123,7 +123,7 @@ const CountryAdd = () => {
                         ) : null}
 
                         <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
-                            Edit
+                            Create
                         </Button>
                     </Grid>
                 </Form>

@@ -87,6 +87,7 @@ const CampaignEdit = () => {
 
     useEffect(() => {
         getCampaign()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

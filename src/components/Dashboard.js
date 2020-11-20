@@ -47,6 +47,7 @@ const Dashboard = (props) => {
 
     useEffect(() => {
         getCampaigns()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

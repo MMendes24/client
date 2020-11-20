@@ -137,6 +137,7 @@ const CampaignInfo = (props) => {
         getWorlds()
         getChars()
         getCountries()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

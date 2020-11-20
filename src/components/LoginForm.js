@@ -4,6 +4,31 @@ import axios from "axios"
 import { Formik, Form, Field } from "formik"
 import * as Yup from "yup"
 
+//styling
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(2),
+        },
+    },
+    formStyles: {
+        margin: theme.spacing(2),
+    },
+    buttonStyles: {
+        fontSize: 14,
+        margin: theme.spacing(2),
+        width: "10%"
+    },
+    error: {
+        fontSize: 14
+    }
+}));
+
 const loginSchema = Yup.object({
     username: Yup.string()
         .max(256, "Please enter a valid username.")
@@ -14,6 +39,9 @@ const loginSchema = Yup.object({
 })
 
 const LoginForm = () => {
+    // for material ui
+    const classes = useStyles()
+
     const history = useHistory()
 
     const userLogin = (values) => {
@@ -30,47 +58,56 @@ const LoginForm = () => {
     }
 
     return (
-        <div>
-            <header>
-                <h1>Campaign Journal</h1>
-                <h2>The most fantastical app on the web!</h2>
-            </header>
-            <section>
-                <h2>Login</h2>
-                <Formik
-                    initialValues={{ username: "", password: "" }}
-                    validationSchema={loginSchema}
-                    onSubmit={(values, { setSubmitting, resetForm }) => {
-                        userLogin(values)
-                        setSubmitting(false)
-                        resetForm()
-                    }}
-                >
-                    {({ errors, touched, isSubmitting }) => (
-                        <Form>
-                            <label>Username:</label>
+        <Grid
+            className={classes.root}
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+        >
+            <Typography variant="h1" gutterBottom>Campaign Journal</Typography>
+            <Typography variant="h2" gutterBottom>The most fantastical app on the web!</Typography>
+            <Formik
+                initialValues={{ username: "", password: "" }}
+                validationSchema={loginSchema}
+                onSubmit={(values, { setSubmitting, resetForm }) => {
+                    userLogin(values)
+                    setSubmitting(false)
+                    resetForm()
+                }}
+            >
+                {({ errors, touched, isSubmitting }) => (
+                    <Form>
+                        <Grid
+                            container
+                            direction="column"
+                            justify="center"
+                            alignItems="center"
+                        >
+                            <Typography variant="h2" gutterBottom>Login</Typography>
+                            <Typography variant="h4" gutterBottom>Username:</Typography>
                             <Field type="username" name="username" />
 
                             {errors.username && touched.username ? (
-                                <div className="error">{errors.username}</div>
+                                <Typography variant="body1" color="error" className={classes.error}>{errors.username}</Typography>
                             ) : null}
 
-                            <label>Password:</label>
+                            <Typography variant="h4" gutterBottom>Password:</Typography>
                             <Field type="password" name="password" />
 
                             {errors.password && touched.password ? (
-                                <div className="error">{errors.password}</div>
+                                <Typography variant="body1" color="error" className={classes.error}>{errors.password}</Typography>
                             ) : null}
 
-                            <button type="submit" disabled={isSubmitting}>
-                                Submit
-                        </button>
-                        </Form>
-                    )}
-                </Formik>
-                <h3>Don't have an account yet? Register here!</h3>
-            </section>
-        </div>
+                            <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
+                                Login
+                            </Button>
+                        </Grid>
+                    </Form>
+                )}
+            </Formik>
+            <Typography variant="h3" gutterBottom>Don't have an account yet? Register here!</Typography>
+        </Grid>
     )
 }
 

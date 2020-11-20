@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom"
 
-
 // import app components 
 import LoginForm from "./components/LoginForm"
 import RegisterForm from "./components/RegisterForm"
@@ -28,44 +27,67 @@ import CharEdit from "./components/CharEdit"
 import CountryAdd from "./components/CountryAdd"
 import CountryEdit from "./components/CountryEdit"
 
+// styles
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import "./App.css"
 
+let theme = createMuiTheme({
+
+  palette: {
+    type: 'dark',
+    primary: {
+      main: "#81c784"
+    },
+    secondary: {
+      main: "#ba68c8"
+    },
+    error: {
+      main: "#e57373"
+    }
+  },
+});
+
+theme = responsiveFontSizes(theme);
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Switch>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar />
+        <Switch>
 
-        <PrivateRoute exact path="/campaign/:id/countries/:countryId/edit-country" component={CountryEdit} />
+          <PrivateRoute exact path="/campaign/:id/countries/:countryId/edit-country" component={CountryEdit} />
 
-        <PrivateRoute exact path="/campaign/:id/add-country" component={CountryAdd} />
+          <PrivateRoute exact path="/campaign/:id/add-country" component={CountryAdd} />
 
-        <PrivateRoute exact path="/campaign/:id/characters/:charId/edit-char" component={CharEdit} />
+          <PrivateRoute exact path="/campaign/:id/characters/:charId/edit-char" component={CharEdit} />
 
-        <PrivateRoute exact path="/campaign/:id/add-char" component={CharAdd} />
+          <PrivateRoute exact path="/campaign/:id/add-char" component={CharAdd} />
 
-        <PrivateRoute exact path="/campaign/:id/worlds/:worldid/edit-world" component={WorldEdit} />
+          <PrivateRoute exact path="/campaign/:id/worlds/:worldid/edit-world" component={WorldEdit} />
 
-        <PrivateRoute exact path="/campaign/:id/add-world" component={WorldAdd} />
+          <PrivateRoute exact path="/campaign/:id/add-world" component={WorldAdd} />
 
-        <PrivateRoute exact path="/add-campaign/:id" component={CampaignAdd} />
+          <PrivateRoute exact path="/add-campaign/:id" component={CampaignAdd} />
 
-        <PrivateRoute exact path="/campaign/:id/edit" component={CampaignEdit} />
+          <PrivateRoute exact path="/campaign/:id/edit" component={CampaignEdit} />
 
-        <PrivateRoute exact path="/campaign/:id" component={CampaignInfo} />
+          <PrivateRoute exact path="/campaign/:id" component={CampaignInfo} />
 
-        <PrivateRoute exact path="/home/:id" component={Dashboard} />
+          <PrivateRoute exact path="/home/:id" component={Dashboard} />
 
-        <Route path="/register" >
-          <RegisterForm />
-        </Route>
+          <Route path="/register" >
+            <RegisterForm />
+          </Route>
 
-        <Route exact path="/" >
-          <LoginForm />
-        </Route>
+          <Route exact path="/" >
+            <LoginForm />
+          </Route>
 
-      </Switch>
+        </Switch>
+      </ThemeProvider>
     </div>
   );
 }

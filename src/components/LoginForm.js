@@ -52,7 +52,7 @@ const LoginForm = () => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/login", values)
             .then(res => {
                 localStorage.setItem("token", res.data.token)
-                localStorage.setItem("user", res.data.user.id);
+                localStorage.setItem("user", res.data.user.id)
                 const id = res.data.user.id
                 history.push(`/home/${id}`)
             })

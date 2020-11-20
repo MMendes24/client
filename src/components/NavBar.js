@@ -23,7 +23,6 @@ const NavBar = () => {
     // for material-ui
     const classes = useStyles();
 
-    const id = localStorage.getItem("user")
     const history = useHistory()
 
     const logOut = () => {
@@ -49,8 +48,7 @@ const NavBar = () => {
                     component="button"
                     variant="button"
                     onClick={() => {
-                        console.log(id)
-                        history.push(`/home/${id}`);
+                        history.push(`/home/${localStorage.getItem("user")}`);
                     }}
                 >
                     Home

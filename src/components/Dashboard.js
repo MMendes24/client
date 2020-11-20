@@ -34,7 +34,6 @@ const Dashboard = (props) => {
         if (verify === id) {
             axiosAuth().get(`campaigns/user-campaigns/${id}`)
                 .then(res => {
-                    console.log(res.data)
                     setCampaigns(res.data.campaigns)
                 })
                 .catch(err => {

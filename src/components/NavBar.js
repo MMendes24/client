@@ -49,6 +49,7 @@ const NavBar = () => {
                     component="button"
                     variant="button"
                     onClick={() => {
+                        console.log(id)
                         history.push(`/home/${id}`);
                     }}
                 >

@@ -13,11 +13,11 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
-            margin: theme.spacing(3),
+            margin: theme.spacing(2),
         },
     },
-    background: {
-        margin: theme.spacing(1),
+    formStyles: {
+        margin: theme.spacing(2),
     },
     buttonStyles: {
         fontSize: 14,
@@ -59,7 +59,7 @@ const LoginForm = () => {
 
     return (
         <Grid
-            className={classes.background}
+            className={classes.root}
             container
             direction="column"
             justify="center"
@@ -67,48 +67,46 @@ const LoginForm = () => {
         >
             <Typography variant="h1" gutterBottom>Campaign Journal</Typography>
             <Typography variant="h2" gutterBottom>The most fantastical app on the web!</Typography>
-            <section>
-                <Formik
-                    initialValues={{ username: "", password: "" }}
-                    validationSchema={loginSchema}
-                    onSubmit={(values, { setSubmitting, resetForm }) => {
-                        userLogin(values)
-                        setSubmitting(false)
-                        resetForm()
-                    }}
-                >
-                    {({ errors, touched, isSubmitting }) => (
-                        <Form>
-                            <Grid
-                                container
-                                direction="column"
-                                justify="center"
-                                alignItems="center"
-                            >
-                                <Typography variant="h2" gutterBottom>Login</Typography>
-                                <Typography variant="h3" gutterBottom>Username:</Typography>
-                                <Field type="username" name="username" />
+            <Formik
+                initialValues={{ username: "", password: "" }}
+                validationSchema={loginSchema}
+                onSubmit={(values, { setSubmitting, resetForm }) => {
+                    userLogin(values)
+                    setSubmitting(false)
+                    resetForm()
+                }}
+            >
+                {({ errors, touched, isSubmitting }) => (
+                    <Form>
+                        <Grid
+                            container
+                            direction="column"
+                            justify="center"
+                            alignItems="center"
+                        >
+                            <Typography variant="h2" gutterBottom>Login</Typography>
+                            <Typography variant="h4" gutterBottom>Username:</Typography>
+                            <Field type="username" name="username" />
 
-                                {errors.username && touched.username ? (
-                                    <Typography variant="body1" color="error" className={classes.error}>{errors.username}</Typography>
-                                ) : null}
+                            {errors.username && touched.username ? (
+                                <Typography variant="body1" color="error" className={classes.error}>{errors.username}</Typography>
+                            ) : null}
 
-                                <Typography variant="h3" gutterBottom>Password:</Typography>
-                                <Field type="password" name="password" />
+                            <Typography variant="h4" gutterBottom>Password:</Typography>
+                            <Field type="password" name="password" />
 
-                                {errors.password && touched.password ? (
-                                    <Typography variant="body1" color="error" className={classes.error}>{errors.password}</Typography>
-                                ) : null}
+                            {errors.password && touched.password ? (
+                                <Typography variant="body1" color="error" className={classes.error}>{errors.password}</Typography>
+                            ) : null}
 
-                                <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
-                                    Login
-                                </Button>
-                            </Grid>
-                        </Form>
-                    )}
-                </Formik>
-                <Typography variant="h3" gutterBottom>Don't have an account yet? Register here!</Typography>
-            </section>
+                            <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
+                                Login
+                            </Button>
+                        </Grid>
+                    </Form>
+                )}
+            </Formik>
+            <Typography variant="h3" gutterBottom>Don't have an account yet? Register here!</Typography>
         </Grid>
     )
 }

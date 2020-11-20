@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios"
 import { Formik, Field, Form } from "formik"
+import { useHistory } from "react-router-dom"
 import * as Yup from "yup"
 
 //styling
@@ -41,10 +42,14 @@ const RegisterForm = () => {
     // for material ui
     const classes = useStyles()
 
+    const history = useHistory()
+
     const userRegister = (values) => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/register", values)
             .then(res => {
                 console.log("Data sent")
+                console.log(res.data)
+                history.push("/")
             })
             .catch(res => {
                 console.log("Data rejected")

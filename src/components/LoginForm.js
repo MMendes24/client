@@ -17,12 +17,16 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     formStyles: {
-        margin: theme.spacing(2),
+        '& > *': {
+            margin: theme.spacing(2),
+        },
+    },
+    registerButton: {
+        fontSize: 16,
     },
     buttonStyles: {
-        fontSize: 14,
-        margin: theme.spacing(2),
-        width: "10%"
+        fontSize: 18,
+        width: "50%"
     },
     error: {
         fontSize: 14
@@ -79,6 +83,7 @@ const LoginForm = () => {
                 {({ errors, touched, isSubmitting }) => (
                     <Form>
                         <Grid
+                            className={classes.formStyles}
                             container
                             direction="column"
                             justify="center"
@@ -106,7 +111,7 @@ const LoginForm = () => {
                     </Form>
                 )}
             </Formik>
-            <Typography variant="h3" gutterBottom>Don't have an account yet? Register here!</Typography>
+            <Typography variant="h3" gutterBottom>Don't have an account yet? <Button color="primary" size="large" className={classes.registerButton} onClick={() => history.push("/register")}>Register here!</Button></Typography>
         </Grid>
     )
 }

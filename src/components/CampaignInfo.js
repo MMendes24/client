@@ -44,7 +44,8 @@ const CampaignInfo = (props) => {
     const history = useHistory()
 
     const getCamps = () => {
-        axiosAuth().get(`campaigns/${id}`)
+        axiosAuth()
+            .get(`campaigns/${id}`)
             .then(res => {
                 setCamp(res.data.campaigns)
             })
@@ -86,6 +87,51 @@ const CampaignInfo = (props) => {
             })
     }
 
+    const deleteCamp = () => {
+        axiosAuth()
+            .delete(`campaigns/${id}`)
+            .then(res => {
+                const dashId = localStorage.getItem("user")
+                history.push(`/home/${dashId}`)
+            })
+            .catch(err => {
+                console.log("didn't work")
+            })
+    }
+
+    const deleteWorld = (world) => {
+        axiosAuth()
+            .delete(`/campaigns/${id}/worlds/${world}`)
+            .then(res => {
+                getWorlds()
+            })
+            .catch(err => {
+                console.error("Failed to delete worlds!")
+            })
+    }
+
+    const deleteChar = (char) => {
+        axiosAuth()
+            .delete(`/campaigns/${id}/characters/${char}`)
+            .then(res => {
+                getChars()
+            })
+            .catch(err => {
+                console.error("Failed to delete characters!")
+            })
+    }
+
+    const deleteCountry = (country) => {
+        axiosAuth()
+            .delete(`/campaigns/${id}/countries/${country}`)
+            .then(res => {
+                getCountries()
+            })
+            .catch(err => {
+                console.error("Failed to delete countries!")
+            })
+    }
+
     useEffect(() => {
         getCamps()
         getWorlds()
@@ -108,7 +154,7 @@ const CampaignInfo = (props) => {
                 <Typography variant="h3" gutterBottom>{camp.name}</Typography>
                 <Typography variant="h3" gutterBottom>{camp.desc}</Typography>
                 <Button className={classes.buttonGeneric} variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/edit`)}>Edit</Button>
-                <Button className={classes.buttonGeneric} variant="outlined" color="secondary">Delete</Button>
+                <Button className={classes.buttonGeneric} variant="outlined" color="secondary" onClick={() => deleteCamp()}>Delete</Button>
             </section>
 
             <section>
@@ -122,7 +168,7 @@ const CampaignInfo = (props) => {
                         </CardContent>
                         <CardActions>
                             <Button variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/worlds/${world.id}/edit-world`)}>Edit</Button>
-                            <Button variant="outlined" color="secondary">Delete</Button>
+                            <Button variant="outlined" color="secondary" onClick={() => deleteWorld(world.id)}>Delete</Button>
                         </CardActions>
                     </Card>
                 ))}
@@ -142,7 +188,7 @@ const CampaignInfo = (props) => {
                         </CardContent>
                         <CardActions>
                             <Button variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/characters/${char.id}/edit-char`)}>Edit</Button>
-                            <Button variant="outlined" color="secondary">Delete</Button>
+                            <Button variant="outlined" color="secondary" onClick={() => deleteChar(char.id)}>Delete</Button>
                         </CardActions>
                     </Card>
                 ))}
@@ -161,7 +207,7 @@ const CampaignInfo = (props) => {
                         </CardContent>
                         <CardActions>
                             <Button variant="outlined" color="primary" onClick={() => history.push(`/campaign/${id}/countries/${country.id}/edit-country`)}>Edit</Button>
-                            <Button variant="outlined" color="secondary">Delete</Button>
+                            <Button variant="outlined" color="secondary" onClick={() => deleteCountry(country.id)}>Delete</Button>
                         </CardActions>
                     </Card>
                 ))}

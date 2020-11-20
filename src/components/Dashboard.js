@@ -63,7 +63,6 @@ const Dashboard = (props) => {
                     <Campaign key={campaign.id} campaign={campaign} />
                 ))}
             </section>
-            
             <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" onClick={() => history.push(`/add-campaign/${id}`)}>New Campaign</Button>
         </Grid>
     )

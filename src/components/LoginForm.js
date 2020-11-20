@@ -13,24 +13,16 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
-            margin: theme.spacing(2),
+            margin: theme.spacing(3),
         },
     },
     background: {
-        width: "50%"
+        margin: theme.spacing(1),
     },
     buttonStyles: {
         fontSize: 14,
         margin: theme.spacing(2),
         width: "10%"
-    },
-    categoryClass: {
-        fontSize: 16,
-        width: "20%"
-    },
-    descClass: {
-        fontSize: 16,
-        width: "20%"
     },
     error: {
         fontSize: 14
@@ -66,19 +58,16 @@ const LoginForm = () => {
     }
 
     return (
-        <Grid 
-        className="bg"
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
+        <Grid
+            className={classes.background}
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
         >
-            <header>
-                <h1>Campaign Journal</h1>
-                <h2>The most fantastical app on the web!</h2>
-            </header>
+            <Typography variant="h1" gutterBottom>Campaign Journal</Typography>
+            <Typography variant="h2" gutterBottom>The most fantastical app on the web!</Typography>
             <section>
-                <h2>Login</h2>
                 <Formik
                     initialValues={{ username: "", password: "" }}
                     validationSchema={loginSchema}
@@ -90,27 +79,35 @@ const LoginForm = () => {
                 >
                     {({ errors, touched, isSubmitting }) => (
                         <Form>
-                            <label>Username:</label>
-                            <Field type="username" name="username" />
+                            <Grid
+                                container
+                                direction="column"
+                                justify="center"
+                                alignItems="center"
+                            >
+                                <Typography variant="h2" gutterBottom>Login</Typography>
+                                <Typography variant="h3" gutterBottom>Username:</Typography>
+                                <Field type="username" name="username" />
 
-                            {errors.username && touched.username ? (
-                                <div className="error">{errors.username}</div>
-                            ) : null}
+                                {errors.username && touched.username ? (
+                                    <Typography variant="body1" color="error" className={classes.error}>{errors.username}</Typography>
+                                ) : null}
 
-                            <label>Password:</label>
-                            <Field type="password" name="password" />
+                                <Typography variant="h3" gutterBottom>Password:</Typography>
+                                <Field type="password" name="password" />
 
-                            {errors.password && touched.password ? (
-                                <div className="error">{errors.password}</div>
-                            ) : null}
+                                {errors.password && touched.password ? (
+                                    <Typography variant="body1" color="error" className={classes.error}>{errors.password}</Typography>
+                                ) : null}
 
-                            <button type="submit" disabled={isSubmitting}>
-                                Submit
-                        </button>
+                                <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
+                                    Login
+                                </Button>
+                            </Grid>
                         </Form>
                     )}
                 </Formik>
-                <h3>Don't have an account yet? Register here!</h3>
+                <Typography variant="h3" gutterBottom>Don't have an account yet? Register here!</Typography>
             </section>
         </Grid>
     )

@@ -48,7 +48,6 @@ const RegisterForm = () => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/register", values)
             .then(res => {
                 console.log("Data sent")
-                console.log(res.data)
                 history.push("/")
             })
             .catch(res => {

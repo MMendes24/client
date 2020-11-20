@@ -183,7 +183,7 @@ const CharEdit = () => {
                         ) : null}
 
                         <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
-                            Create
+                            Edit
                         </Button>
                     </Grid>
                 </Form>

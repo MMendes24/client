@@ -129,8 +129,8 @@ const WorldEdit = () => {
                         ) : null}
 
                         <Button className={classes.buttonStyles} color="primary" size="large" variant="contained" type="submit" disabled={isSubmitting}>
-                            Create
-                    </Button>
+                            Edit
+                        </Button>
                     </Grid>
                 </Form>
             )}

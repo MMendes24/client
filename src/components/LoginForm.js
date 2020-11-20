@@ -4,6 +4,39 @@ import axios from "axios"
 import { Formik, Form, Field } from "formik"
 import * as Yup from "yup"
 
+//styling
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(2),
+        },
+    },
+    background: {
+        width: "50%"
+    },
+    buttonStyles: {
+        fontSize: 14,
+        margin: theme.spacing(2),
+        width: "10%"
+    },
+    categoryClass: {
+        fontSize: 16,
+        width: "20%"
+    },
+    descClass: {
+        fontSize: 16,
+        width: "20%"
+    },
+    error: {
+        fontSize: 14
+    }
+}));
+
 const loginSchema = Yup.object({
     username: Yup.string()
         .max(256, "Please enter a valid username.")
@@ -14,6 +47,9 @@ const loginSchema = Yup.object({
 })
 
 const LoginForm = () => {
+    // for material ui
+    const classes = useStyles()
+
     const history = useHistory()
 
     const userLogin = (values) => {
@@ -30,7 +66,13 @@ const LoginForm = () => {
     }
 
     return (
-        <div>
+        <Grid 
+        className="bg"
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        >
             <header>
                 <h1>Campaign Journal</h1>
                 <h2>The most fantastical app on the web!</h2>
@@ -70,7 +112,7 @@ const LoginForm = () => {
                 </Formik>
                 <h3>Don't have an account yet? Register here!</h3>
             </section>
-        </div>
+        </Grid>
     )
 }
 

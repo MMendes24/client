@@ -96,7 +96,7 @@ const RegisterForm = () => {
                             ) : null}
 
                             <Typography variant="h4" gutterBottom>Email</Typography>
-                            <Field type="password" name="email" />
+                            <Field type="email" name="email" />
 
                             {errors.email && touched.email ? (
                                 <Typography variant="body1" color="error" className={classes.error}>{errors.email}</Typography>

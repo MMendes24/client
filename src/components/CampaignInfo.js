@@ -50,7 +50,7 @@ const CampaignInfo = (props) => {
                 setCamp(res.data.campaigns)
             })
             .catch(err => {
-                console.log("didn't work")
+                console.log("No campaigns to display. This message usually occurs because no campaigns have been created.")
             })
     }
 

@@ -47,8 +47,10 @@ const RegisterForm = () => {
     const userRegister = (values) => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/register", values)
             .then(res => {
-                console.log("Data sent")
-                history.push("/")
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("user", res.data.data[0])
+                const id = res.data.data[0]
+                history.push(`/home/${id}`)
             })
             .catch(res => {
                 console.log("Data rejected")

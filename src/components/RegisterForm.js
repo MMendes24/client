@@ -47,8 +47,10 @@ const RegisterForm = () => {
     const userRegister = (values) => {
         axios.post("https://campaign-journal-api.herokuapp.com/api/users/register", values)
             .then(res => {
-                console.log("Data sent")
-                history.push("/")
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("user", res.data.data[0])
+                const id = res.data.data[0]
+                history.push(`/home/${id}`)
             })
             .catch(res => {
                 console.log("Data rejected")
@@ -94,7 +96,7 @@ const RegisterForm = () => {
                             ) : null}
 
                             <Typography variant="h4" gutterBottom>Email</Typography>
-                            <Field type="password" name="email" />
+                            <Field type="email" name="email" />
 
                             {errors.email && touched.email ? (
                                 <Typography variant="body1" color="error" className={classes.error}>{errors.email}</Typography>

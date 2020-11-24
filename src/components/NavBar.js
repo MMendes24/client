@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     navLink: {
         fontSize: 20,
         margin: theme.spacing(1),
+    },
+    "&:hover": {
+        color: "#262626"
     }
 }));
 
@@ -39,7 +42,16 @@ const NavBar = () => {
             alignItems="center"
         >
             <header>
-                <Typography variant="h2" gutterBottom>Campaign Journal</Typography>
+                <Link
+                    variant="h2"
+                    gutterBottom
+                    onClick={() => {
+                        history.push(`/home/${localStorage.getItem("user")}`);
+                    }}
+
+                >
+                    Campaign Journal
+                    </Link>
             </header>
             <nav>
 

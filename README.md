@@ -1,68 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![CampaignJournal](src\assets\cj.png)
 
-## Available Scripts
+## Campaign Journal
 
-In the project directory, you can run:
+Campaign Journal is a single-page React app that allows you to create and manage fantasy worlds and other fictional settings, focusing especially on tabletop games (no support for other mediums is yet present.) Currently, it allows you to create and describe "campaigns", as well as the characters, countries, and worlds attached to them. The development focus so far has been keeping it sleek, simple, and functional. Its server, along with a detailed explanation of the endpoints available, can be found here: https://github.com/campaignjournal/server
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Tech Stack
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+React | Material-UI | Formik | Yup 
 
-### `npm test`
+Primarily, keeping the app in vanilla React and avoiding "over-engineering" was a huge focus. Therefore, the decision was made to keep outside libraries to a minimum. Despite this, due to the unusually large amount of forms required for the app's functionality Formik was brought in to standardize and streamline the process of form building and submission (although it's worth noting that Formik is, essentially, built entirely using vanilla React.) Because Formik has built-in compatibility with Yup, which is already a brilliantly simple and elegant solution to the issue of form validation, Yup was also brought in. Material-UI was chosen because it keeps styles modern and uniform, minimizing issues with the UI and helping to prevent human error caused by "eyeballing" things like measurements. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Functionality
 
-### `npm run build`
+Users must be registered and logged in to access any of the functionality of campaign journal. A user can create any number of campaigns, and any number of items attached to that campaign. Users can perform all CRUD operations on any item.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Future Releases
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Currently, the routers for History and Religion end points (which can be found in the web server) are unused by the client, and expanding user options to include this is a high priority. The ability for users to collaborate and share their works, as well as the introduction of a related "admin" role are likely to come in a future release.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The decision to attach worlds to campaigns (rather than campaigns to worlds) was made due to the fact that many "fantasy games" often include multiple worlds but are part of a single, consistent narrative. However, there are flaws to this approach (reusing a world for a later narrative, for example) and the choice to split them up entirely or else reverse their order might one day be made. 
 
-### `npm run eject`
+A more distant goal is the support of other storytelling mediums (novels, movies, etc.)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

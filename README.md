@@ -1,4 +1,4 @@
-![CampaignJournal](src\assets\cj.png)
+![CampaignJournal](assets\cj.png)
 
 ## Campaign Journal
 
